@@ -1,0 +1,86 @@
+{
+  "as_of": "2026-08-05",
+  "as_of_display": "5 Aug 2026, 21:07 IST",
+  "verdict": "The initiative advanced 4 weighted points today to 68%. Tier 1 airport coverage and the 44-URL sitemap are live, but the score is capped by missing actual-cost reconciliation, assisted attribution, full Beacon funnel coverage and operating gates.",
+  "completion": {
+    "current": 68,
+    "prior": 64,
+    "daily_points": 4,
+    "relative_daily_change": 6.3
+  },
+  "history": [
+    {"date": "2026-07-30", "label": "30 Jul", "completion": 12, "delta": 12, "summary": "strategy, URL contract and v2 leaders"},
+    {"date": "2026-07-31", "label": "31 Jul", "completion": 22, "delta": 10, "summary": "canonical identity and pricing basis"},
+    {"date": "2026-08-01", "label": "1 Aug", "completion": 34, "delta": 12, "summary": "identity runtime and Nexus content"},
+    {"date": "2026-08-02", "label": "2 Aug", "completion": 45, "delta": 11, "summary": "route funnel and airport contracts"},
+    {"date": "2026-08-03", "label": "3 Aug", "completion": 54, "delta": 9, "summary": "eligible sitemap and route discovery"},
+    {"date": "2026-08-04", "label": "4 Aug", "completion": 64, "delta": 10, "summary": "economics persistence and Tier 1 closure"},
+    {"date": "2026-08-05", "label": "5 Aug", "completion": 68, "delta": 4, "summary": "production deploy and airport journey fixes"}
+  ],
+  "workstreams": [
+    {"name": "Canonical market identity", "weight": 12, "earned": 12, "percent": 100, "status": "Done · Nexus #98 closed"},
+    {"name": "Tier 1 product coverage", "weight": 20, "earned": 17, "percent": 85, "status": "Live · Mysore reverse and closure QA remain"},
+    {"name": "Website funnel attribution", "weight": 12, "earned": 10, "percent": 83, "status": "Producer events live · reconciliation remains"},
+    {"name": "Assisted / WhatsApp attribution", "weight": 8, "earned": 2, "percent": 25, "status": "Channel foundations exist · end-to-end proof absent"},
+    {"name": "Route economics authority", "weight": 16, "earned": 9, "percent": 56, "status": "Ledger and persistence live · actual costs/reporting absent"},
+    {"name": "Monitoring and reconciliation", "weight": 10, "earned": 4, "percent": 40, "status": "Beacon query exists · four funnel metrics missing"},
+    {"name": "SEO discovery and canonicals", "weight": 10, "earned": 10, "percent": 100, "status": "Live · GSC success, 44 URLs"},
+    {"name": "Operating scorecard", "weight": 8, "earned": 4, "percent": 50, "status": "This dashboard is live · commercial truth incomplete"},
+    {"name": "Scale / maintain / pause gates", "weight": 4, "earned": 0, "percent": 0, "status": "Numeric gates and owners not agreed"}
+  ],
+  "outcomes": {
+    "ga4": {
+      "timezone": "Asia/Kolkata",
+      "latest_day": {"date": "2026-08-04", "sessions": 3, "engaged_sessions": 3, "users": 3},
+      "prior_day": {"date": "2026-08-03", "sessions": 14, "engaged_sessions": 14, "users": 10},
+      "current_7d": {"range": "29 Jul–4 Aug", "sessions": 58, "engaged_sessions": 58, "users": 42},
+      "prior_7d": {"range": "22–28 Jul", "sessions": 36, "engaged_sessions": 36, "users": 31},
+      "top_pages": [
+        {"page": "/bangalore", "sessions": 10},
+        {"page": "/taxi-package/bangalore-mysore-1n-2days-tour", "sessions": 10},
+        {"page": "/taxi-package/one-day-bangalore-to-nandi-hills-sunrise-tour-package", "sessions": 7},
+        {"page": "/round-trip/bangalore-to-mysore", "sessions": 5},
+        {"page": "/round-trip/bangalore-to-chennai", "sessions": 3},
+        {"page": "/airport-taxi-bangalore-airport-to-indiranagar", "sessions": 2}
+      ]
+    },
+    "gsc": {
+      "settled_through": "2026-08-03",
+      "current_day": {"clicks": 5, "impressions": 342, "ctr": 1.46, "position": 26.66},
+      "prior_day": {"clicks": 6, "impressions": 307, "ctr": 1.95, "position": 20.45},
+      "current_7d": {"range": "28 Jul–3 Aug", "clicks": 49, "impressions": 2760, "ctr": 1.78, "position": 23.50},
+      "prior_7d": {"range": "21–27 Jul", "clicks": 24, "impressions": 2515, "ctr": 0.95, "position": 22.36},
+      "top_queries": [
+        {"query": "nandi hills package", "clicks": 5, "impressions": 58, "ctr": 8.62, "position": 8.8, "page": "/taxi-package/one-day-bangalore-to-nandi-hills-sunrise-tour-package"},
+        {"query": "nandi hills trip package", "clicks": 4, "impressions": 38, "ctr": 10.53, "position": 7.5, "page": "/taxi-package/one-day-bangalore-to-nandi-hills-sunrise-tour-package"},
+        {"query": "nandi hills package from bangalore", "clicks": 3, "impressions": 39, "ctr": 7.69, "position": 8.8, "page": "/taxi-package/one-day-bangalore-to-nandi-hills-sunrise-tour-package"},
+        {"query": "bangalore mysore package tour 2 days", "clicks": 2, "impressions": 118, "ctr": 1.69, "position": 8.4, "page": "/taxi-package/bangalore-mysore-1n-2days-tour"},
+        {"query": "taxi near me", "clicks": 2, "impressions": 86, "ctr": 2.33, "position": 7.7, "page": "/city-taxi/bangalore"},
+        {"query": "bangalore to chennai cab", "clicks": 1, "impressions": 223, "ctr": 0.45, "position": 26.3, "page": "/one-way-bangalore-to-chennai-cabs"}
+      ]
+    },
+    "beacon": {
+      "status": "Partial",
+      "window": "24h ending 2026-08-05T21:07:24+05:30",
+      "landing_sessions": 0,
+      "missing_metrics": ["quote sessions", "vehicle availability", "checkout sessions", "confirmed bookings"]
+    }
+  },
+  "actions": [
+    {"type": "Technical", "title": "Finish Beacon funnel coverage", "detail": "Emit and ingest quote, vehicle-availability, checkout and confirmed-booking metrics with bounded Bangalore/channel labels, then verify equal 24-hour windows."},
+    {"type": "Content / CTR", "title": "Consolidate Mysore intent", "detail": "The query “bangalore to mysore cab” has 276 impressions across four old and new URL variants with zero clicks. Complete canonical consolidation and revise the winning title only after settled data."},
+    {"type": "Commercial", "title": "Close actual-cost reconciliation", "detail": "Connect completed, cancelled and refunded bookings to supplier actuals and return-load outcomes so route contribution—not sessions—can drive scale or pause decisions."}
+  ],
+  "evidence": [
+    {"date": "2026-08-05", "repo": "Orbit", "title": "Bangalore airport journey improvements merged", "url": "https://github.com/GMC-GetMeCab/orbit/pull/172", "result": "contracts guarded"},
+    {"date": "2026-08-05", "repo": "Orbit", "title": "Tier 1 airport coverage deployed", "url": "https://github.com/GMC-GetMeCab/orbit/actions/runs/30970296476", "result": "production passed"},
+    {"date": "2026-08-05", "repo": "Nexus", "title": "Economics persistence deployed with migration", "url": "https://github.com/GMC-GetMeCab/nexus/actions/runs/30970057626", "result": "production passed"},
+    {"date": "2026-08-05", "repo": "Production", "title": "Bangalore market sitemap", "url": "https://www.getmecab.com/sitemap-bangalore.xml", "result": "44 URLs"},
+    {"date": "2026-08-04", "repo": "Nexus", "title": "Immutable route economics decisions", "url": "https://github.com/GMC-GetMeCab/nexus/pull/127", "result": "merged"},
+    {"date": "2026-08-04", "repo": "Orbit", "title": "Tier 1 airport coverage gaps closed", "url": "https://github.com/GMC-GetMeCab/orbit/pull/162", "result": "merged"},
+    {"date": "2026-08-04", "repo": "Beacon", "title": "Attributed market funnel query", "url": "https://github.com/GMC-GetMeCab/beacon/pull/7", "result": "merged"},
+    {"date": "2026-08-03", "repo": "Orbit", "title": "Eligible Bangalore sitemap registry", "url": "https://github.com/GMC-GetMeCab/orbit/pull/148", "result": "merged"},
+    {"date": "2026-08-01", "repo": "Nexus", "title": "Canonical identity through quote and booking", "url": "https://github.com/GMC-GetMeCab/nexus/pull/110", "result": "merged"},
+    {"date": "2026-07-30", "repo": "Compass", "title": "Bangalore B2C Market Hub epic", "url": "https://github.com/GMC-GetMeCab/compass/issues/1", "result": "initiative opened"}
+  ]
+}

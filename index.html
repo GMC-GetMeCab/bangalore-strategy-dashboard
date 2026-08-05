@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Daily evidence-led progress report for the GetMeCab Bangalore B2C Market Hub initiative.">
+  <title>Bangalore Market Hub · Daily Control Board</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="#top" aria-label="Bangalore control board home">
+      <span class="brand-mark">BLR</span>
+      <span>Market Hub control board</span>
+    </a>
+    <div class="as-of"><span class="pulse"></span> Evidence through <time id="asOf"></time></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">Daily initiative report · Asia/Kolkata</p>
+        <h1>Product foundation live.<br><em>Commercial loop incomplete.</em></h1>
+        <p id="verdict" class="verdict"></p>
+        <div class="hero-links">
+          <a href="https://github.com/GMC-GetMeCab/compass/issues/1">Open strategy epic ↗</a>
+          <a href="https://www.getmecab.com/sitemap-bangalore.xml">Inspect live sitemap ↗</a>
+        </div>
+      </div>
+      <div class="completion" aria-label="Initiative completion">
+        <svg viewBox="0 0 180 180" role="img" aria-label="68 percent complete">
+          <circle class="ring-bg" cx="90" cy="90" r="72"></circle>
+          <circle id="ring" class="ring-progress" cx="90" cy="90" r="72"></circle>
+        </svg>
+        <div class="completion-number"><strong id="completionValue">—</strong><span>% complete</span></div>
+        <p><b id="dailyDelta">—</b> points today<br><small id="relativeDelta"></small></p>
+      </div>
+    </section>
+
+    <section class="rail-section" aria-labelledby="journey-title">
+      <div class="section-head">
+        <div><p class="kicker">The initiative line</p><h2 id="journey-title">How far we moved, day by day</h2></div>
+        <p>Progress points move only when weighted acceptance evidence changes. PR volume alone earns nothing.</p>
+      </div>
+      <div id="progressRail" class="progress-rail"></div>
+    </section>
+
+    <section class="signal-grid" aria-labelledby="signals-title">
+      <div class="section-head full">
+        <div><p class="kicker">Observed outcomes</p><h2 id="signals-title">Search and traffic signals</h2></div>
+        <p>Delivery progress and market response are kept separate. Movement is correlation, not attribution.</p>
+      </div>
+      <article class="signal-card signal-ga">
+        <div class="signal-label">GA4 · organic sessions</div>
+        <strong id="gaSessions">—</strong>
+        <span id="gaSessionsDelta"></span>
+        <p id="gaWindow"></p>
+      </article>
+      <article class="signal-card signal-gsc">
+        <div class="signal-label">GSC · clicks</div>
+        <strong id="gscClicks">—</strong>
+        <span id="gscClicksDelta"></span>
+        <p id="gscWindow"></p>
+      </article>
+      <article class="signal-card signal-gsc">
+        <div class="signal-label">GSC · impressions</div>
+        <strong id="gscImpressions">—</strong>
+        <span id="gscImpressionsDelta"></span>
+        <p id="gscPosition"></p>
+      </article>
+      <article class="signal-card signal-warning">
+        <div class="signal-label">Beacon · funnel coverage</div>
+        <strong id="beaconCoverage">—</strong>
+        <span>instrumentation status</span>
+        <p id="beaconMissing"></p>
+      </article>
+    </section>
+
+    <section class="scorecard" aria-labelledby="score-title">
+      <div class="section-head full">
+        <div><p class="kicker">Weighted acceptance</p><h2 id="score-title">What makes up the 68%</h2></div>
+        <p>Each workstream has a fixed weight. Partial credit requires merged or production evidence.</p>
+      </div>
+      <div id="workstreams" class="workstreams"></div>
+    </section>
+
+    <section class="two-column">
+      <article class="panel">
+        <div class="panel-title"><span>01</span><h2>Top organic landing pages</h2></div>
+        <div class="table-wrap"><table><thead><tr><th>Page</th><th>Sessions</th></tr></thead><tbody id="landingPages"></tbody></table></div>
+      </article>
+      <article class="panel">
+        <div class="panel-title"><span>02</span><h2>Top search queries</h2></div>
+        <div class="table-wrap"><table><thead><tr><th>Query</th><th>Clicks</th><th>Impr.</th><th>Pos.</th></tr></thead><tbody id="queries"></tbody></table></div>
+      </article>
+    </section>
+
+    <section class="action-section">
+      <div class="section-head full">
+        <div><p class="kicker">Today’s operating brief</p><h2>Three actions, in dependency order</h2></div>
+      </div>
+      <div id="actions" class="actions"></div>
+    </section>
+
+    <section class="evidence-section">
+      <div class="section-head full">
+        <div><p class="kicker">Evidence ledger</p><h2>What changed today</h2></div>
+        <p>Links point to the underlying pull request, deployment, issue, or live artifact.</p>
+      </div>
+      <div id="evidence" class="evidence-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Generated from GA4, Search Console, Beacon and cross-repository GitHub evidence.</p>
+    <p><a href="methodology.html">How the score works</a> · <a href="reports/2026-08-05.html">Full daily report</a> · <a href="https://github.com/GMC-GetMeCab/bangalore-strategy-dashboard">Source</a></p>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
