@@ -15,10 +15,24 @@ fetch('data/report.json')
   .then(data => {
     document.getElementById('asOf').textContent = data.as_of_display;
     document.getElementById('verdict').textContent = data.verdict;
-    document.getElementById('completionValue').textContent = data.completion.current;
-    document.getElementById('dailyDelta').textContent = `+${data.completion.daily_points}`;
-    document.getElementById('relativeDelta').textContent = `${data.completion.relative_daily_change}% relative movement from yesterday`;
-    document.getElementById('ring').style.strokeDashoffset = 452.4 * (1 - data.completion.current / 100);
+    document.getElementById('mergedPrs').textContent = data.delivery_summary.merged_github_prs;
+    document.getElementById('repoCount').textContent = data.delivery_summary.repositories;
+    document.getElementById('liveUrls').textContent = data.delivery_summary.live_sitemap_urls;
+
+    document.getElementById('repoLanes').innerHTML = data.repository_lanes.map(lane => `
+      <article class="repo-lane">
+        <header><div><small>${lane.repo}</small><h3>${lane.title}</h3></div><strong>${lane.merged_prs}<span> merged</span></strong></header>
+        <p>${lane.summary}</p>
+        <ul>${lane.highlights.map(item => `<li>${item.url ? `<a href="${item.url}">${item.text}</a>` : item.text}</li>`).join('')}</ul>
+        <div class="lane-status">${lane.status}</div>
+      </article>`).join('');
+
+    document.getElementById('dailyWork').innerHTML = data.daily_work.map(day => `
+      <article class="work-day">
+        <div class="work-day-date"><time datetime="${day.date}">${day.label}</time><strong>${day.completion}%</strong><span>+${day.delta} pts</span></div>
+        <div><h3>${day.headline}</h3><ul>${day.shipped.map(item => `<li>${item}</li>`).join('')}</ul></div>
+        <div class="work-day-proof">${day.proof.map(link => `<a href="${link.url}">${link.label} ↗</a>`).join('')}</div>
+      </article>`).join('');
 
     document.getElementById('progressRail').innerHTML = data.history.map(day => `
       <article class="station">

@@ -8,6 +8,137 @@
     "daily_points": 4,
     "relative_daily_change": 6.3
   },
+  "delivery_summary": {
+    "period": "30 Jul–5 Aug 2026",
+    "merged_github_prs": 102,
+    "repositories": 7,
+    "legacy_bitbucket_prs": 1,
+    "production_deployments": 2,
+    "live_sitemap_urls": 44
+  },
+  "repository_lanes": [
+    {
+      "repo": "Orbit · 57 merged PRs",
+      "title": "Customer experience and SEO delivery",
+      "merged_prs": 57,
+      "summary": "Turned Bangalore from a set of disconnected pages into an Orbit-owned market, discovery and booking experience.",
+      "highlights": [
+        {"text": "Launched the eligible Bangalore sitemap and consolidated canonical URL families", "url": "https://github.com/GMC-GetMeCab/orbit/pull/148"},
+        {"text": "Built the route-level booking funnel and persistent Bangalore attribution", "url": "https://github.com/GMC-GetMeCab/orbit/pull/159"},
+        {"text": "Completed all ten reviewed Tier 1 airport directions and expanded the sitemap to 44 URLs", "url": "https://github.com/GMC-GetMeCab/orbit/pull/162"},
+        {"text": "Unified the journey composer, airport/outstation flow, flight details, dispatch fields and fare conversion", "url": "https://github.com/GMC-GetMeCab/orbit/pull/175"},
+        {"text": "Protected the Bangalore SEO contract and exact submitted sitemap membership", "url": "https://github.com/GMC-GetMeCab/orbit/pull/172"}
+      ],
+      "status": "Live in production · Orbit #108 still needs final dependency/closure proof"
+    },
+    {
+      "repo": "Nexus · 30 merged PRs",
+      "title": "Canonical data, pricing and commercial authority",
+      "merged_prs": 30,
+      "summary": "Created the server-owned contracts that keep market identity, quotes, bookings, SEO content, packages and economics consistent.",
+      "highlights": [
+        {"text": "Defined canonical market identity and carried it through quote and booking", "url": "https://github.com/GMC-GetMeCab/nexus/pull/110"},
+        {"text": "Emitted quote and booking lifecycle events", "url": "https://github.com/GMC-GetMeCab/nexus/pull/111"},
+        {"text": "Added the route economics ledger, guardrails and immutable persisted decisions", "url": "https://github.com/GMC-GetMeCab/nexus/pull/127"},
+        {"text": "Built the taxi-package model, lifecycle, rates, quotes and published detail API", "url": "https://github.com/GMC-GetMeCab/nexus/pull/130"},
+        {"text": "Classified route quote availability for measurement", "url": "https://github.com/GMC-GetMeCab/nexus/pull/129"}
+      ],
+      "status": "Core runtime deployed · actual-cost reconciliation and operating reports remain"
+    },
+    {
+      "repo": "Concierge · 7 merged PRs",
+      "title": "Assisted journey foundation",
+      "merged_prs": 7,
+      "summary": "Established the website Concierge channel and preserved journey context across the assisted experience.",
+      "highlights": [
+        {"text": "Added automated production deployment", "url": "https://github.com/GMC-GetMeCab/concierge/pull/25"},
+        {"text": "Created the website Concierge channel foundation", "url": "https://github.com/GMC-GetMeCab/concierge/pull/31"},
+        {"text": "Added the Orbit journey-context contract and Redis-backed sessions", "url": "https://github.com/GMC-GetMeCab/concierge/pull/33"}
+      ],
+      "status": "Foundation shipped · completed-booking WhatsApp attribution still open"
+    },
+    {
+      "repo": "Beacon + Terra · 5 merged PRs",
+      "title": "Observability and production ownership",
+      "merged_prs": 5,
+      "summary": "Moved observability infrastructure into owned desired state and added an attributed Bangalore funnel query.",
+      "highlights": [
+        {"text": "Moved production Alloy ownership into Terra", "url": "https://github.com/GMC-GetMeCab/terra/pull/2"},
+        {"text": "Documented Beacon deployment and operations", "url": "https://github.com/GMC-GetMeCab/beacon/pull/3"},
+        {"text": "Added the attributed market funnel query", "url": "https://github.com/GMC-GetMeCab/beacon/pull/7"}
+      ],
+      "status": "Query path exists · production scrape and four funnel series need completion"
+    },
+    {
+      "repo": "Atlas + Compass · 3 merged PRs",
+      "title": "Architecture and initiative control",
+      "merged_prs": 3,
+      "summary": "Created the cross-repository operating frame, canonical Bangalore URL architecture and shared engineering rules.",
+      "highlights": [
+        {"text": "Modelled canonical Bangalore URL architecture", "url": "https://github.com/GMC-GetMeCab/gmc-atlas/pull/756"},
+        {"text": "Established the Bangalore B2C Market Hub epic", "url": "https://github.com/GMC-GetMeCab/compass/issues/1"},
+        {"text": "Linked the implementation back into one cross-repository initiative", "url": "https://github.com/GMC-GetMeCab/compass/issues/1#issuecomment-5175273311"}
+      ],
+      "status": "Initiative controlled · authoritative commercial scorecard and gates remain"
+    },
+    {
+      "repo": "Legacy frontend + AWS + GSC",
+      "title": "Migration and search launch",
+      "merged_prs": 1,
+      "summary": "Removed Bangalore ownership from the legacy sitemap, routed new sitemaps to Orbit and submitted clean city inventories to Google.",
+      "highlights": [
+        {"text": "Removed superseded Bangalore source URLs in gmc_frontend PR #77", "url": "https://bitbucket.org/gmc-project/gmc_frontend/pull-requests/77"},
+        {"text": "Added ALB rules for /sitemap-bangalore.xml and /sitemap-vijayawada.xml"},
+        {"text": "Submitted both sitemaps in GSC: Bangalore discovered ~40 initially; Vijayawada ~13"},
+        {"text": "Deployed Nexus and Orbit and verified the Bangalore sitemap at 44 live URLs", "url": "https://www.getmecab.com/sitemap-bangalore.xml"}
+      ],
+      "status": "Live · Google discovery succeeded; settled indexing and ranking reviews continue"
+    }
+  ],
+  "daily_work": [
+    {
+      "date": "2026-08-05", "label": "5 Aug", "completion": 68, "delta": 4,
+      "headline": "Deployed economics and Tier 1 coverage, then rebuilt the airport journey",
+      "shipped": ["Nexus migration deploy and Orbit production deploy passed smoke checks", "Airport ↔ Bellandur and Sarjapur Road went live; sitemap reached 44 URLs", "Shipped 11 additional Orbit improvements covering airport direction, exact addresses, outstation transfer, flight details, checkout dispatch, SEO guards and fare conversion", "Published the first canonical taxi-package detail experience"],
+      "proof": [{"label": "Orbit deploy", "url": "https://github.com/GMC-GetMeCab/orbit/actions/runs/30970296476"}, {"label": "Airport conversion PR", "url": "https://github.com/GMC-GetMeCab/orbit/pull/175"}, {"label": "Nexus package API", "url": "https://github.com/GMC-GetMeCab/nexus/pull/130"}]
+    },
+    {
+      "date": "2026-08-04", "label": "4 Aug", "completion": 64, "delta": 10,
+      "headline": "Made economics persistent and closed Tier 1 airport coverage gaps",
+      "shipped": ["Persisted immutable route-economics decisions in Nexus", "Added four missing Bellandur/Sarjapur airport pages and made all ten airport localities discoverable", "Added privacy-safe Bangalore funnel telemetry and Beacon attributed funnel querying", "Modelled the canonical Bangalore URL architecture in Atlas"],
+      "proof": [{"label": "Nexus #127", "url": "https://github.com/GMC-GetMeCab/nexus/pull/127"}, {"label": "Orbit #162", "url": "https://github.com/GMC-GetMeCab/orbit/pull/162"}, {"label": "Beacon #7", "url": "https://github.com/GMC-GetMeCab/beacon/pull/7"}]
+    },
+    {
+      "date": "2026-08-03", "label": "3 Aug", "completion": 54, "delta": 9,
+      "headline": "Launched clean city sitemaps and strengthened route discovery",
+      "shipped": ["Created the eligibility-driven Bangalore sitemap and dedicated Vijayawada sitemap", "Removed Bangalore URLs from the legacy sitemap and routed city sitemaps through ALB", "Submitted both sitemaps successfully in GSC", "Improved fares, round-trip quotes, route discovery, canonicals, guides and Concierge integration"],
+      "proof": [{"label": "Orbit #148", "url": "https://github.com/GMC-GetMeCab/orbit/pull/148"}, {"label": "Vijayawada #154", "url": "https://github.com/GMC-GetMeCab/orbit/pull/154"}, {"label": "Legacy PR #77", "url": "https://bitbucket.org/gmc-project/gmc_frontend/pull-requests/77"}]
+    },
+    {
+      "date": "2026-08-02", "label": "2 Aug", "completion": 45, "delta": 11,
+      "headline": "Instrumented the booking funnel and strengthened Bangalore trust",
+      "shipped": ["Measured search → fare → cab → checkout → booking at route level", "Created the distinctive Bangalore market hero, pricing and trust treatment", "Moved airport SEO identity and content into Nexus", "Created Concierge web-channel and journey-context foundations", "Moved Alloy ownership into Terra"],
+      "proof": [{"label": "Orbit #135", "url": "https://github.com/GMC-GetMeCab/orbit/pull/135"}, {"label": "Orbit #138", "url": "https://github.com/GMC-GetMeCab/orbit/pull/138"}, {"label": "Terra #2", "url": "https://github.com/GMC-GetMeCab/terra/pull/2"}]
+    },
+    {
+      "date": "2026-08-01", "label": "1 Aug", "completion": 34, "delta": 12,
+      "headline": "Connected canonical identity, SEO content and booking runtime",
+      "shipped": ["Carried canonical market identity through Nexus quote and booking events", "Rendered Nexus-managed SEO content on market and route pages", "Fixed market and branch journey experiences", "Added deployment protection for Bangalore SEO routes"],
+      "proof": [{"label": "Nexus #110", "url": "https://github.com/GMC-GetMeCab/nexus/pull/110"}, {"label": "Orbit #124", "url": "https://github.com/GMC-GetMeCab/orbit/pull/124"}, {"label": "Orbit #129", "url": "https://github.com/GMC-GetMeCab/orbit/pull/129"}]
+    },
+    {
+      "date": "2026-07-31", "label": "31 Jul", "completion": 22, "delta": 10,
+      "headline": "Established the canonical lifecycle and transparent pricing basis",
+      "shipped": ["Defined canonical market identity and lifecycle contracts", "Exposed round-trip pricing basis in Nexus and explained calculations in Orbit", "Re-enabled the Market Hub trip selector", "Fixed Concierge round-trip quote parity"],
+      "proof": [{"label": "Nexus #103", "url": "https://github.com/GMC-GetMeCab/nexus/pull/103"}, {"label": "Orbit #118", "url": "https://github.com/GMC-GetMeCab/orbit/pull/118"}]
+    },
+    {
+      "date": "2026-07-30", "label": "30 Jul", "completion": 12, "delta": 12,
+      "headline": "Set the architecture and launched the v2 market leaders",
+      "shipped": ["Documented and enforced the Orbit public URL contract", "Served v2 market and route leaders and migrated Bangalore/Vijayawada SEO leaders", "Separated market hubs from local-rental pages", "Created Nexus SEO storage, publishing and caching foundations", "Created automated Concierge deployment and the parent Bangalore epic"],
+      "proof": [{"label": "Orbit #113", "url": "https://github.com/GMC-GetMeCab/orbit/pull/113"}, {"label": "Nexus #97", "url": "https://github.com/GMC-GetMeCab/nexus/pull/97"}, {"label": "Compass epic", "url": "https://github.com/GMC-GetMeCab/compass/issues/1"}]
+    }
+  ],
   "history": [
     {"date": "2026-07-30", "label": "30 Jul", "completion": 12, "delta": 12, "summary": "strategy, URL contract and v2 leaders"},
     {"date": "2026-07-31", "label": "31 Jul", "completion": 22, "delta": 10, "summary": "canonical identity and pricing basis"},

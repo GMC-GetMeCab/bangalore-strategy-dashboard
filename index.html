@@ -27,19 +27,33 @@
           <a href="https://www.getmecab.com/sitemap-bangalore.xml">Inspect live sitemap ↗</a>
         </div>
       </div>
-      <div class="completion" aria-label="Initiative completion">
-        <svg viewBox="0 0 180 180" role="img" aria-label="68 percent complete">
-          <circle class="ring-bg" cx="90" cy="90" r="72"></circle>
-          <circle id="ring" class="ring-progress" cx="90" cy="90" r="72"></circle>
-        </svg>
-        <div class="completion-number"><strong id="completionValue">—</strong><span>% complete</span></div>
-        <p><b id="dailyDelta">—</b> points today<br><small id="relativeDelta"></small></p>
+      <div class="delivery-totals" aria-label="Delivery totals">
+        <div><strong id="mergedPrs">—</strong><span>merged GitHub PRs</span></div>
+        <div><strong id="repoCount">—</strong><span>repositories advanced</span></div>
+        <div><strong id="liveUrls">—</strong><span>Bangalore sitemap URLs</span></div>
+        <p>Plus <a href="https://bitbucket.org/gmc-project/gmc_frontend/pull-requests/77">legacy frontend PR #77</a>, ALB routing, two production deployments and GSC submission.</p>
       </div>
+    </section>
+
+    <section class="shipped-section" aria-labelledby="shipped-title">
+      <div class="section-head full">
+        <div><p class="kicker">The actual work</p><h2 id="shipped-title">What you have built and shipped</h2></div>
+        <p>Grouped by owning repository. Every lane links to concrete merged pull requests or production evidence.</p>
+      </div>
+      <div id="repoLanes" class="repo-lanes"></div>
+    </section>
+
+    <section class="daily-work-section" aria-labelledby="daily-work-title">
+      <div class="section-head full">
+        <div><p class="kicker">Daily shipment log</p><h2 id="daily-work-title">What moved each day</h2></div>
+        <p>The daily percentage is shown beside the accepted work that earned it.</p>
+      </div>
+      <div id="dailyWork" class="daily-work"></div>
     </section>
 
     <section class="rail-section" aria-labelledby="journey-title">
       <div class="section-head">
-        <div><p class="kicker">The initiative line</p><h2 id="journey-title">How far we moved, day by day</h2></div>
+        <div><p class="kicker">Acceptance progress</p><h2 id="journey-title">How far the epic moved</h2></div>
         <p>Progress points move only when weighted acceptance evidence changes. PR volume alone earns nothing.</p>
       </div>
       <div id="progressRail" class="progress-rail"></div>
@@ -104,7 +118,7 @@
 
     <section class="evidence-section">
       <div class="section-head full">
-        <div><p class="kicker">Evidence ledger</p><h2>What changed today</h2></div>
+        <div><p class="kicker">Latest evidence</p><h2>Recent PRs and deployments</h2></div>
         <p>Links point to the underlying pull request, deployment, issue, or live artifact.</p>
       </div>
       <div id="evidence" class="evidence-list"></div>
