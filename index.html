@@ -28,11 +28,20 @@
         </div>
       </div>
       <div class="delivery-totals" aria-label="Portfolio status">
-        <div><strong id="portfolioCompletion">—</strong><span>portfolio complete</span></div>
-        <div><strong id="launchRate">—</strong><span>projects fully launched</span></div>
-        <div><strong id="foundationRate">—</strong><span>projects with a live foundation</span></div>
-        <p id="launchDefinition"></p>
+        <div class="primary-status"><strong id="portfolioCompletion">—</strong><span>overall initiative complete</span></div>
+        <div><strong id="stageStatus">—</strong><span>current business stage</span></div>
+        <div><strong id="launchCount">—</strong><span>projects fully launched</span></div>
+        <p id="statusTruth"></p>
       </div>
+    </section>
+
+    <section class="executive-section" aria-labelledby="executive-title">
+      <div class="section-head full">
+        <div><p class="kicker">30-second briefing</p><h2 id="executive-title">What a co-founder needs to know</h2></div>
+        <p>Delivery is ahead of commercial measurement. The next milestone is not more pages—it is proving bookings, completion and contribution.</p>
+      </div>
+      <div id="executiveBrief" class="executive-brief"></div>
+      <div class="decision-callout"><small>Decision required now</small><strong id="decisionRequired"></strong><p id="decisionReason"></p></div>
     </section>
 
     <section class="story-section" aria-labelledby="story-title">
@@ -49,7 +58,22 @@
         <div><p class="kicker">Project portfolio</p><h2 id="shipped-title">Seven projects make the strategy real</h2></div>
         <p>Read top to bottom. Each project explains its purpose, what is complete, what remains and whether customers or operators can use it today.</p>
       </div>
+      <div class="portfolio-table-wrap">
+        <table class="portfolio-table">
+          <thead><tr><th>Project</th><th>Why it exists</th><th>Status</th><th>Complete</th><th>Owner</th><th>Target</th><th>Next decision</th></tr></thead>
+          <tbody id="portfolioRows"></tbody>
+        </table>
+      </div>
+      <div class="detail-head"><p class="kicker">Project detail</p><h3>Completed work and remaining work</h3></div>
       <div id="projects" class="projects"></div>
+    </section>
+
+    <section class="commercial-section" aria-labelledby="commercial-title">
+      <div class="section-head full">
+        <div><p class="kicker">Is the business working?</p><h2 id="commercial-title">Commercial proof is the missing layer</h2></div>
+        <p>Unknown means the measurement path is incomplete. It does not mean zero.</p>
+      </div>
+      <div id="businessFunnel" class="business-funnel"></div>
     </section>
 
     <section class="difference-section" aria-labelledby="difference-title">

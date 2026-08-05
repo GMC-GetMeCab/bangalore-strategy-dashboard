@@ -16,9 +16,14 @@ fetch('data/report.json')
     document.getElementById('asOf').textContent = data.as_of_display;
     document.getElementById('verdict').textContent = data.verdict;
     document.getElementById('portfolioCompletion').textContent = `${data.completion.current}%`;
-    document.getElementById('launchRate').textContent = `${data.portfolio_summary.launch_rate}%`;
-    document.getElementById('foundationRate').textContent = `${data.portfolio_summary.foundation_rate}%`;
-    document.getElementById('launchDefinition').textContent = data.portfolio_summary.definition;
+    document.getElementById('stageStatus').textContent = data.executive.stage;
+    document.getElementById('launchCount').textContent = `${data.portfolio_summary.fully_launched} of ${data.portfolio_summary.project_count}`;
+    document.getElementById('statusTruth').textContent = data.executive.status_truth;
+    document.getElementById('decisionRequired').textContent = data.executive.decision_required;
+    document.getElementById('decisionReason').textContent = data.executive.decision_reason;
+
+    document.getElementById('executiveBrief').innerHTML = data.executive.brief.map(item => `
+      <article class="brief-card ${item.tone}"><small>${item.label}</small><strong>${item.value}</strong><p>${item.detail}</p></article>`).join('');
 
     document.getElementById('strategyChain').innerHTML = data.strategy_chain.map((step, index) => `
       <article><span>${String(index + 1).padStart(2, '0')}</span><strong>${step.name}</strong><p>${step.purpose}</p></article>`).join('');
@@ -34,6 +39,12 @@ fetch('data/report.json')
         </div>
         <footer><span>Owned through ${project.systems.join(' · ')}</span><a href="${project.evidence_url}">View evidence ↗</a></footer>
       </article>`).join('');
+
+    document.getElementById('portfolioRows').innerHTML = data.projects.map(project => `
+      <tr><td><strong>${project.name}</strong></td><td>${project.why_short}</td><td><span class="status-pill ${project.status_code}">${project.launch_status}</span></td><td>${project.completion}%</td><td>${project.owner}</td><td>${project.target}</td><td>${project.next_decision}</td></tr>`).join('');
+
+    document.getElementById('businessFunnel').innerHTML = data.business_funnel.map(item => `
+      <article class="funnel-metric ${item.status}"><small>${item.label}</small><strong>${item.value}</strong><span>${item.status_label}</span><p>${item.detail}</p></article>`).join('');
 
     document.getElementById('differences').innerHTML = data.differences.map(item => `
       <article><div><small>Before</small><p>${item.before}</p></div><span>→</span><div><small>Now</small><p>${item.now}</p><strong>Why: ${item.why}</strong></div></article>`).join('');

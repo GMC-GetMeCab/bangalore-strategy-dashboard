@@ -16,6 +16,28 @@
     "foundation_rate": 71,
     "definition": "Launch rate means all agreed acceptance criteria are live and verified: 2 of 7 projects. Five of seven already have usable production foundations."
   },
+  "executive": {
+    "stage": "Validate",
+    "status_truth": "The customer and search foundations are live. Profitability and completed-trip performance cannot yet be verified.",
+    "decision_required": "Assign owners and target dates to the commercial truth loop",
+    "decision_reason": "Actual-cost reconciliation, assisted attribution, production monitoring and scale gates span several systems. Without named accountability, product delivery can continue while the business decision remains blocked.",
+    "brief": [
+      {"label": "What is live", "value": "Customer + search foundation", "detail": "Bangalore hub, routes, airport products, packages, 44-URL sitemap, canonical contracts and website funnel producers are in production.", "tone": "positive"},
+      {"label": "Early market signal", "value": "+104% GSC clicks", "detail": "Seven-day Bangalore clicks rose from 24 to 49. This is promising discovery movement, not yet proof that the new work caused bookings.", "tone": "positive"},
+      {"label": "Main blocker", "value": "Commercial truth missing", "detail": "Confirmed bookings, completed trips, supplier actuals, refunds and contribution are not yet reconciled into one trusted view.", "tone": "risk"},
+      {"label": "What happens next", "value": "Measure before scaling", "detail": "Finish instrumentation and economics, observe settled SEO and funnel data, then make route-level scale, maintain or pause decisions.", "tone": "warning"}
+    ]
+  },
+  "business_funnel": [
+    {"label": "Search discovery", "value": "2,760", "status": "available", "status_label": "Measured", "detail": "Bangalore GSC impressions during 28 Jul–3 Aug."},
+    {"label": "Organic visits", "value": "58", "status": "available", "status_label": "Measured", "detail": "Bangalore organic sessions during 29 Jul–4 Aug."},
+    {"label": "Quotes", "value": "Unknown", "status": "unknown", "status_label": "Instrumentation incomplete", "detail": "Producer work exists, but production Beacon coverage is not complete."},
+    {"label": "Checkout starts", "value": "Unknown", "status": "unknown", "status_label": "Instrumentation incomplete", "detail": "Cannot yet reconcile site progression into authoritative bookings."},
+    {"label": "Confirmed bookings", "value": "Unknown", "status": "unknown", "status_label": "Reconciliation missing", "detail": "Booking truth exists in backend systems but is not available in this scorecard."},
+    {"label": "Completed trips", "value": "Unknown", "status": "unknown", "status_label": "Reconciliation missing", "detail": "Completion and cancellation outcomes are required before operational validation."},
+    {"label": "Revenue and cost", "value": "Unknown", "status": "unknown", "status_label": "Actual costs missing", "detail": "Supplier actuals, refunds and revenue need an authoritative join."},
+    {"label": "Contribution", "value": "Unknown", "status": "unknown", "status_label": "Decision blocked", "detail": "Routes cannot responsibly scale until completed-trip contribution is visible."}
+  ],
   "strategy_chain": [
     {"name": "Be discovered", "purpose": "Give Google one clean, canonical Bangalore inventory."},
     {"name": "Choose a trip", "purpose": "Help customers understand products, fares and directions."},
@@ -26,6 +48,11 @@
   "projects": [
     {
       "name": "Search discovery and URL migration",
+      "why_short": "Concentrate Google authority on one clean Bangalore inventory.",
+      "status_code": "launched",
+      "owner": "SEO / Orbit",
+      "target": "Live; reviews at 14/28 days",
+      "next_decision": "Keep or adjust URLs/content after settled search evidence",
       "why": "Google must see one authoritative URL for every real Bangalore product. Duplicate legacy and Orbit URLs split ranking signals and made sitemap quality difficult to control.",
       "completion": 100,
       "launch_status": "Launched",
@@ -36,6 +63,11 @@
     },
     {
       "name": "Bangalore customer journey and Tier 1 products",
+      "why_short": "Turn search demand into understandable, bookable journeys.",
+      "status_code": "validating",
+      "owner": "Product / Orbit",
+      "target": "Not agreed",
+      "next_decision": "Close Tier 1 scope and decide which routes enter validation",
       "why": "A search landing page is valuable only if the customer can select the right trip, understand the fare and reach checkout without losing route or airport context.",
       "completion": 85,
       "launch_status": "Live · closure pending",
@@ -46,6 +78,11 @@
     },
     {
       "name": "Canonical data and content platform",
+      "why_short": "Keep identity, pricing and content consistent across systems.",
+      "status_code": "launched",
+      "owner": "Platform / Nexus",
+      "target": "Live; ongoing governance",
+      "next_decision": "Approve future migrations only through governed contracts",
       "why": "Market identity, SEO copy, routes, fares and booking events cannot be independently invented by each page. One server-owned contract prevents drift and makes changes auditable.",
       "completion": 100,
       "launch_status": "Launched",
@@ -56,6 +93,11 @@
     },
     {
       "name": "Route economics and pricing authority",
+      "why_short": "Know whether completed trips make or lose money.",
+      "status_code": "foundation",
+      "owner": "Unassigned across Nexus + Operations",
+      "target": "Not agreed",
+      "next_decision": "Scale, maintain or pause each route using contribution",
       "why": "Bookings and traffic can grow while the route loses money. Scaling decisions require immutable price decisions and actual supplier-cost reconciliation at route level.",
       "completion": 56,
       "launch_status": "Foundation live",
@@ -66,6 +108,11 @@
     },
     {
       "name": "Customer acquisition and booking attribution",
+      "why_short": "Connect every channel and landing page to a real booking outcome.",
+      "status_code": "validating",
+      "owner": "Unassigned across Growth + Product",
+      "target": "Not agreed",
+      "next_decision": "Choose acquisition investment by channel and route",
       "why": "We need to know which landing page and channel created a quote, checkout and confirmed booking without exposing customer data or losing identity between systems.",
       "completion": 63,
       "launch_status": "Website live · assisted partial",
@@ -76,6 +123,11 @@
     },
     {
       "name": "Monitoring and reconciliation",
+      "why_short": "Prove production data is complete and alert when it is not.",
+      "status_code": "foundation",
+      "owner": "Unassigned across Beacon + Terra",
+      "target": "Not agreed",
+      "next_decision": "Trust the funnel and economics scorecard operationally",
       "why": "An event emitter is not measurement until production collection, reconciliation and alerts prove that the numbers are complete and trustworthy.",
       "completion": 40,
       "launch_status": "Foundation live",
@@ -86,6 +138,11 @@
     },
     {
       "name": "Operating scorecard and scale decisions",
+      "why_short": "Make expansion decisions from demand, margin and reliability.",
+      "status_code": "not-launched",
+      "owner": "Unassigned commercial owner",
+      "target": "Not agreed",
+      "next_decision": "Run the first formal scale / maintain / pause review",
       "why": "The initiative is complete only when the team can decide to scale, maintain or pause each route using demand, conversion, contribution and operational reliability—not opinion.",
       "completion": 25,
       "launch_status": "Not launched",
