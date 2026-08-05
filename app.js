@@ -15,47 +15,41 @@ fetch('data/report.json')
   .then(data => {
     document.getElementById('asOf').textContent = data.as_of_display;
     document.getElementById('verdict').textContent = data.verdict;
-    document.getElementById('portfolioCompletion').textContent = `${data.completion.current}%`;
-    document.getElementById('stageStatus').textContent = data.executive.stage;
-    document.getElementById('launchCount').textContent = `${data.portfolio_summary.fully_launched} of ${data.portfolio_summary.project_count}`;
-    document.getElementById('statusTruth').textContent = data.executive.status_truth;
-    document.getElementById('decisionRequired').textContent = data.executive.decision_required;
-    document.getElementById('decisionReason').textContent = data.executive.decision_reason;
+    const projects = data.initiative_projects;
+    const milestones = projects.flatMap(project => project.milestones.map(milestone => ({...milestone, project: project.name})));
+    const evidenceCount = milestones.reduce((total, milestone) => total + milestone.evidence.length, 0);
+    document.getElementById('projectTotal').textContent = projects.length;
+    document.getElementById('milestoneTotal').textContent = milestones.length;
+    document.getElementById('evidenceTotal').textContent = evidenceCount;
 
-    document.getElementById('executiveBrief').innerHTML = data.executive.brief.map(item => `
-      <article class="brief-card ${item.tone}"><small>${item.label}</small><strong>${item.value}</strong><p>${item.detail}</p></article>`).join('');
+    const dialog = document.getElementById('detailDialog');
+    const dialogContent = document.getElementById('dialogContent');
+    const statusClass = status => status.toLowerCase().replace(/[^a-z]+/g, '-');
+    const evidenceLinks = evidence => evidence.map(item => `<a href="${item.url}">${item.label} ↗</a>`).join('');
+    const openDetail = (project, milestone = null) => {
+      const item = milestone || project;
+      dialogContent.innerHTML = `<p class="kicker">${milestone ? project.name : 'Project'}</p><h2>${item.name}</h2>
+        <dl><dt>What it is</dt><dd>${item.what}</dd><dt>Why we did it</dt><dd>${item.why}</dd><dt>What it enables</dt><dd>${item.enables}</dd><dt>Status</dt><dd>${item.status}${item.progress !== undefined ? ` · ${item.progress}%` : ''}</dd></dl>
+        <div class="dialog-evidence"><h3>Issues, PRs and evidence</h3>${evidenceLinks(milestone ? milestone.evidence : project.milestones.flatMap(value => value.evidence))}</div>`;
+      dialog.showModal();
+    };
 
-    document.getElementById('strategyChain').innerHTML = data.strategy_chain.map((step, index) => `
-      <article><span>${String(index + 1).padStart(2, '0')}</span><strong>${step.name}</strong><p>${step.purpose}</p></article>`).join('');
+    document.getElementById('masterProjectRows').innerHTML = projects.map((project, index) => `
+      <tr class="clickable-row" tabindex="0" role="button" data-project="${index}"><td><strong>${project.name}</strong><span>${project.system}</span></td><td>${project.role}</td><td><span class="status-pill ${statusClass(project.status)}">${project.status}</span></td><td>${project.progress}%</td><td>${project.milestones.length}</td><td>${project.milestones.reduce((sum, item) => sum + item.evidence.length, 0)}</td></tr>`).join('');
 
-    document.getElementById('projects').innerHTML = data.projects.map((project, index) => `
-      <article class="project-card">
-        <div class="project-index">Project ${String(index + 1).padStart(2, '0')}</div>
-        <header><div><h3>${project.name}</h3><p>${project.why}</p></div><div class="project-score"><strong>${project.completion}%</strong><span>${project.launch_status}</span></div></header>
-        <div class="project-progress"><i style="width:${project.completion}%"></i></div>
-        <div class="project-columns">
-          <div><h4>Complete</h4><ul>${project.complete.map(item => `<li>${item}</li>`).join('')}</ul></div>
-          <div><h4>Pending</h4><ul>${project.pending.map(item => `<li>${item}</li>`).join('')}</ul></div>
-        </div>
-        <footer><span>Owned through ${project.systems.join(' · ')}</span><a href="${project.evidence_url}">View evidence ↗</a></footer>
-      </article>`).join('');
+    document.getElementById('projectMilestoneTables').innerHTML = projects.map((project, projectIndex) => `
+      <section class="milestone-group" id="project-${project.slug}"><header><div><p class="kicker">${project.system}</p><h3>${project.name}</h3></div><span>${project.progress}% · ${project.status}</span></header>
+        <div class="portfolio-table-wrap"><table class="portfolio-table milestone-table"><thead><tr><th>Feature or milestone</th><th>Status</th><th>What it enables</th><th>Issues / PRs</th></tr></thead><tbody>${project.milestones.map((milestone, milestoneIndex) => `
+          <tr class="clickable-row" tabindex="0" role="button" data-project="${projectIndex}" data-milestone="${milestoneIndex}"><td><strong>${milestone.name}</strong></td><td><span class="status-pill ${statusClass(milestone.status)}">${milestone.status}</span></td><td>${milestone.enables}</td><td>${milestone.evidence.length}</td></tr>`).join('')}</tbody></table></div>
+      </section>`).join('');
 
-    document.getElementById('portfolioRows').innerHTML = data.projects.map(project => `
-      <tr><td><strong>${project.name}</strong></td><td>${project.why_short}</td><td><span class="status-pill ${project.status_code}">${project.launch_status}</span></td><td>${project.completion}%</td><td>${project.owner}</td><td>${project.target}</td><td>${project.next_decision}</td></tr>`).join('');
-
-    document.getElementById('businessFunnel').innerHTML = data.business_funnel.map(item => `
-      <article class="funnel-metric ${item.status}"><small>${item.label}</small><strong>${item.value}</strong><span>${item.status_label}</span><p>${item.detail}</p></article>`).join('');
-
-    document.getElementById('differences').innerHTML = data.differences.map(item => `
-      <article><div><small>Before</small><p>${item.before}</p></div><span>→</span><div><small>Now</small><p>${item.now}</p><strong>Why: ${item.why}</strong></div></article>`).join('');
-
-    document.getElementById('repoLanes').innerHTML = data.repository_lanes.map(lane => `
-      <article class="repo-lane">
-        <header><div><small>${lane.repo}</small><h3>${lane.title}</h3></div><strong>${lane.merged_prs}<span> merged</span></strong></header>
-        <p>${lane.summary}</p>
-        <ul>${lane.highlights.map(item => `<li>${item.url ? `<a href="${item.url}">${item.text}</a>` : item.text}</li>`).join('')}</ul>
-        <div class="lane-status">${lane.status}</div>
-      </article>`).join('');
+    document.querySelectorAll('.clickable-row').forEach(row => {
+      const show = () => { const project = projects[Number(row.dataset.project)]; const milestone = row.dataset.milestone === undefined ? null : project.milestones[Number(row.dataset.milestone)]; openDetail(project, milestone); };
+      row.addEventListener('click', show);
+      row.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); show(); } });
+    });
+    document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 
     document.getElementById('dailyWork').innerHTML = data.daily_work.map(day => `
       <article class="work-day">

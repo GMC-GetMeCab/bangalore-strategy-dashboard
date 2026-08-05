@@ -19,78 +19,39 @@
   <main id="top">
     <section class="hero">
       <div class="hero-copy">
-        <p class="kicker">Bangalore B2C market initiative · executive walkthrough</p>
-        <h1>Build one measurable,<br><em>profitable city business.</em></h1>
+        <p class="kicker">GetMeCab initiative portfolio · Bangalore launch</p>
+        <h1>Every project.<br><em>One operating plan.</em></h1>
         <p id="verdict" class="verdict"></p>
         <div class="hero-links">
           <a href="https://github.com/GMC-GetMeCab/compass/issues/1">Open strategy epic ↗</a>
           <a href="https://www.getmecab.com/sitemap-bangalore.xml">Inspect live sitemap ↗</a>
         </div>
       </div>
-      <div class="delivery-totals" aria-label="Portfolio status">
-        <div class="primary-status"><strong id="portfolioCompletion">—</strong><span>overall initiative complete</span></div>
-        <div><strong id="stageStatus">—</strong><span>current business stage</span></div>
-        <div><strong id="launchCount">—</strong><span>projects fully launched</span></div>
-        <p id="statusTruth"></p>
+      <div class="delivery-totals" aria-label="Portfolio totals">
+        <div class="primary-status"><strong id="projectTotal">—</strong><span>projects mapped</span></div>
+        <div><strong id="milestoneTotal">—</strong><span>feature milestones</span></div>
+        <div><strong id="evidenceTotal">—</strong><span>linked evidence groups</span></div>
+        <p>Click any project or milestone row to understand what it is, why it was done, what it enables and the underlying evidence.</p>
       </div>
     </section>
 
-    <section class="executive-section" aria-labelledby="executive-title">
+    <section class="portfolio-section" aria-labelledby="portfolio-title">
       <div class="section-head full">
-        <div><p class="kicker">30-second briefing</p><h2 id="executive-title">What a co-founder needs to know</h2></div>
-        <p>Delivery is ahead of commercial measurement. The next milestone is not more pages—it is proving bookings, completion and contribution.</p>
+        <div><p class="kicker">All initiatives</p><h2 id="portfolio-title">Project portfolio</h2></div>
+        <p>This is the top-level map. Select a row for its purpose, rationale, capability unlocked and linked work.</p>
       </div>
-      <div id="executiveBrief" class="executive-brief"></div>
-      <div class="decision-callout"><small>Decision required now</small><strong id="decisionRequired"></strong><p id="decisionReason"></p></div>
+      <div class="portfolio-table-wrap"><table class="portfolio-table master-table"><thead><tr><th>Project</th><th>Role in the initiative</th><th>Status</th><th>Progress</th><th>Milestones</th><th>Evidence</th></tr></thead><tbody id="masterProjectRows"></tbody></table></div>
     </section>
 
-    <section class="story-section" aria-labelledby="story-title">
-      <div class="story-intro">
-        <p class="kicker">Why this initiative exists</p>
-        <h2 id="story-title">Traffic alone is not a business.</h2>
-        <p>GetMeCab already had pages, prices and bookings, but they lived across legacy URLs, disconnected systems and incomplete measurement. We are rebuilding Bangalore as one controlled operating loop: attract the right customer, quote a valid product, complete the trip, know the true contribution, then decide where to scale.</p>
-      </div>
-      <div id="strategyChain" class="strategy-chain" aria-label="Bangalore business operating chain"></div>
-    </section>
-
-    <section class="shipped-section" aria-labelledby="shipped-title">
+    <section class="milestones-section" aria-labelledby="milestones-title">
       <div class="section-head full">
-        <div><p class="kicker">Project portfolio</p><h2 id="shipped-title">Seven projects make the strategy real</h2></div>
-        <p>Read top to bottom. Each project explains its purpose, what is complete, what remains and whether customers or operators can use it today.</p>
+        <div><p class="kicker">Features and milestones</p><h2 id="milestones-title">Work inside every project</h2></div>
+        <p>Each project has its own table. Status reflects the milestone—not merely whether code was merged.</p>
       </div>
-      <div class="portfolio-table-wrap">
-        <table class="portfolio-table">
-          <thead><tr><th>Project</th><th>Why it exists</th><th>Status</th><th>Complete</th><th>Owner</th><th>Target</th><th>Next decision</th></tr></thead>
-          <tbody id="portfolioRows"></tbody>
-        </table>
-      </div>
-      <div class="detail-head"><p class="kicker">Project detail</p><h3>Completed work and remaining work</h3></div>
-      <div id="projects" class="projects"></div>
+      <div id="projectMilestoneTables" class="project-milestone-tables"></div>
     </section>
 
-    <section class="commercial-section" aria-labelledby="commercial-title">
-      <div class="section-head full">
-        <div><p class="kicker">Is the business working?</p><h2 id="commercial-title">Commercial proof is the missing layer</h2></div>
-        <p>Unknown means the measurement path is incomplete. It does not mean zero.</p>
-      </div>
-      <div id="businessFunnel" class="business-funnel"></div>
-    </section>
-
-    <section class="difference-section" aria-labelledby="difference-title">
-      <div class="section-head full">
-        <div><p class="kicker">What we did differently</p><h2 id="difference-title">From scattered pages to a controlled market system</h2></div>
-        <p>These are deliberate architecture and operating choices—not cosmetic changes.</p>
-      </div>
-      <div id="differences" class="differences"></div>
-    </section>
-
-    <section class="repo-section" aria-labelledby="repo-title">
-      <div class="section-head full">
-        <div><p class="kicker">System ownership</p><h2 id="repo-title">How the projects map to systems</h2></div>
-        <p>Repository activity is evidence of delivery, not the way the initiative is explained.</p>
-      </div>
-      <div id="repoLanes" class="repo-lanes compact"></div>
-    </section>
+    <dialog id="detailDialog" class="detail-dialog"><button class="dialog-close" type="button" aria-label="Close details">×</button><div id="dialogContent"></div></dialog>
 
     <section class="daily-work-section" aria-labelledby="daily-work-title">
       <div class="section-head full">

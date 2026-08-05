@@ -65,7 +65,31 @@ h1 em { color: var(--airport); font-weight: inherit; }
 .delivery-totals span { color: #d4dfd8; font-size: .85rem; }
 .delivery-totals p { margin: 0; padding: 20px; color: #b8c8be; background: var(--asphalt-2); font-size: .82rem; }
 .delivery-totals a { color: var(--white); }
-.rail-section, .executive-section, .story-section, .shipped-section, .commercial-section, .difference-section, .repo-section, .daily-work-section, .signal-grid, .scorecard, .two-column, .action-section, .evidence-section { padding: clamp(58px, 8vw, 100px) clamp(20px, 7vw, 110px); }
+.rail-section, .portfolio-section, .milestones-section, .executive-section, .story-section, .shipped-section, .commercial-section, .difference-section, .repo-section, .daily-work-section, .signal-grid, .scorecard, .two-column, .action-section, .evidence-section { padding: clamp(58px, 8vw, 100px) clamp(20px, 7vw, 110px); }
+.portfolio-section { background: var(--white); }
+.milestones-section { background: #e8eee9; }
+.master-table td:first-child span { display: block; margin-top: 5px; color: var(--muted); font: .68rem ui-monospace, monospace; }
+.clickable-row { cursor: pointer; transition: background-color .15s ease; }
+.clickable-row:hover, .clickable-row:focus { background: #edf5ef; }
+.clickable-row:focus { outline: 3px solid var(--airport); outline-offset: -3px; }
+.project-milestone-tables { display: grid; gap: 48px; }
+.milestone-group > header { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 15px; }
+.milestone-group > header h3 { margin: 0; font: 500 clamp(1.8rem,3vw,3rem) Georgia, serif; }
+.milestone-group > header > span { color: var(--muted); font: .72rem ui-monospace, monospace; text-transform: uppercase; }
+.milestone-group .portfolio-table-wrap { margin: 0; }
+.milestone-table { min-width: 850px; }
+.detail-dialog { width: min(760px, calc(100% - 32px)); max-height: 88vh; padding: 0; color: var(--ink); background: var(--white); border: 0; box-shadow: 0 24px 80px rgba(0,0,0,.3); }
+.detail-dialog::backdrop { background: rgba(10,24,18,.76); backdrop-filter: blur(4px); }
+.detail-dialog #dialogContent { padding: clamp(30px,6vw,64px); }
+.detail-dialog h2 { margin: 0 45px 30px 0; font-size: clamp(2.2rem,5vw,4rem); line-height: .95; letter-spacing: -.04em; }
+.detail-dialog dl { display: grid; grid-template-columns: 130px 1fr; gap: 0 24px; margin: 0; border-top: 1px solid var(--line); }
+.detail-dialog dt, .detail-dialog dd { margin: 0; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.detail-dialog dt { color: var(--garden); font: .68rem ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
+.detail-dialog dd { color: var(--muted); }
+.dialog-close { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; color: var(--white); background: var(--asphalt); border: 0; font-size: 1.6rem; cursor: pointer; }
+.dialog-evidence { margin-top: 28px; }
+.dialog-evidence h3 { font: 500 1.3rem Georgia, serif; }
+.dialog-evidence a { display: block; margin: 10px 0; color: var(--garden); text-underline-offset: 3px; }
 .executive-section { background: var(--white); }
 .executive-brief { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
 .brief-card { min-height: 220px; padding: 24px; border-top: 5px solid var(--garden); background: var(--paper); }
@@ -246,6 +270,10 @@ footer a { color: var(--white); }
   .executive-brief, .business-funnel { grid-template-columns: 1fr; }
   .differences article > span { text-align: left; transform: rotate(90deg); transform-origin: left; }
   .project-card > footer { flex-direction: column; }
+  .milestone-group > header { align-items: start; flex-direction: column; gap: 8px; }
+  .detail-dialog dl { grid-template-columns: 1fr; }
+  .detail-dialog dt { padding-bottom: 0; border-bottom: 0; }
+  .detail-dialog dd { padding-top: 7px; }
   footer { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) {
