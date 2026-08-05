@@ -15,9 +15,28 @@ fetch('data/report.json')
   .then(data => {
     document.getElementById('asOf').textContent = data.as_of_display;
     document.getElementById('verdict').textContent = data.verdict;
-    document.getElementById('mergedPrs').textContent = data.delivery_summary.merged_github_prs;
-    document.getElementById('repoCount').textContent = data.delivery_summary.repositories;
-    document.getElementById('liveUrls').textContent = data.delivery_summary.live_sitemap_urls;
+    document.getElementById('portfolioCompletion').textContent = `${data.completion.current}%`;
+    document.getElementById('launchRate').textContent = `${data.portfolio_summary.launch_rate}%`;
+    document.getElementById('foundationRate').textContent = `${data.portfolio_summary.foundation_rate}%`;
+    document.getElementById('launchDefinition').textContent = data.portfolio_summary.definition;
+
+    document.getElementById('strategyChain').innerHTML = data.strategy_chain.map((step, index) => `
+      <article><span>${String(index + 1).padStart(2, '0')}</span><strong>${step.name}</strong><p>${step.purpose}</p></article>`).join('');
+
+    document.getElementById('projects').innerHTML = data.projects.map((project, index) => `
+      <article class="project-card">
+        <div class="project-index">Project ${String(index + 1).padStart(2, '0')}</div>
+        <header><div><h3>${project.name}</h3><p>${project.why}</p></div><div class="project-score"><strong>${project.completion}%</strong><span>${project.launch_status}</span></div></header>
+        <div class="project-progress"><i style="width:${project.completion}%"></i></div>
+        <div class="project-columns">
+          <div><h4>Complete</h4><ul>${project.complete.map(item => `<li>${item}</li>`).join('')}</ul></div>
+          <div><h4>Pending</h4><ul>${project.pending.map(item => `<li>${item}</li>`).join('')}</ul></div>
+        </div>
+        <footer><span>Owned through ${project.systems.join(' · ')}</span><a href="${project.evidence_url}">View evidence ↗</a></footer>
+      </article>`).join('');
+
+    document.getElementById('differences').innerHTML = data.differences.map(item => `
+      <article><div><small>Before</small><p>${item.before}</p></div><span>→</span><div><small>Now</small><p>${item.now}</p><strong>Why: ${item.why}</strong></div></article>`).join('');
 
     document.getElementById('repoLanes').innerHTML = data.repository_lanes.map(lane => `
       <article class="repo-lane">

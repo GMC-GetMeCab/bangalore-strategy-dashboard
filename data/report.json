@@ -8,6 +8,100 @@
     "daily_points": 4,
     "relative_daily_change": 6.3
   },
+  "portfolio_summary": {
+    "project_count": 7,
+    "fully_launched": 2,
+    "launch_rate": 29,
+    "live_foundation": 5,
+    "foundation_rate": 71,
+    "definition": "Launch rate means all agreed acceptance criteria are live and verified: 2 of 7 projects. Five of seven already have usable production foundations."
+  },
+  "strategy_chain": [
+    {"name": "Be discovered", "purpose": "Give Google one clean, canonical Bangalore inventory."},
+    {"name": "Choose a trip", "purpose": "Help customers understand products, fares and directions."},
+    {"name": "Book reliably", "purpose": "Carry exact journey context into checkout and dispatch."},
+    {"name": "Know the economics", "purpose": "Reconcile revenue, supplier cost, refunds and contribution."},
+    {"name": "Scale deliberately", "purpose": "Expand only when demand, margin and operations pass agreed gates."}
+  ],
+  "projects": [
+    {
+      "name": "Search discovery and URL migration",
+      "why": "Google must see one authoritative URL for every real Bangalore product. Duplicate legacy and Orbit URLs split ranking signals and made sitemap quality difficult to control.",
+      "completion": 100,
+      "launch_status": "Launched",
+      "systems": ["Orbit", "gmc_frontend", "AWS ALB", "GSC"],
+      "complete": ["Eligibility-driven Bangalore sitemap is live with 44 URLs", "Legacy Bangalore sitemap entries were removed", "ALB routes the sitemap to Orbit", "Bangalore and Vijayawada sitemaps were accepted successfully in GSC", "Canonical and alias contracts are protected by tests"],
+      "pending": ["Observe settled 14-day and 28-day indexing/ranking outcomes", "Resolve remaining Mysore query cannibalisation only after settled evidence"],
+      "evidence_url": "https://github.com/GMC-GetMeCab/orbit/pull/172"
+    },
+    {
+      "name": "Bangalore customer journey and Tier 1 products",
+      "why": "A search landing page is valuable only if the customer can select the right trip, understand the fare and reach checkout without losing route or airport context.",
+      "completion": 85,
+      "launch_status": "Live · closure pending",
+      "systems": ["Orbit", "Nexus"],
+      "complete": ["Market hub, outstation, local-rental, airport and package journeys are connected", "Ten reviewed Tier 1 airport directions are live", "Airport direction, fare area, exact address, terminal and flight context persist into checkout", "Fixed fares, advance payable and cancellation context are visible before checkout", "Core Bangalore navigation stays inside Orbit"],
+      "pending": ["Prove Mysore reverse supply and canonical pricing before launch", "Complete route-by-route commercial, mobile and performance closure QA", "Verify production conversion behavior over a meaningful observation window"],
+      "evidence_url": "https://github.com/GMC-GetMeCab/orbit/issues/108"
+    },
+    {
+      "name": "Canonical data and content platform",
+      "why": "Market identity, SEO copy, routes, fares and booking events cannot be independently invented by each page. One server-owned contract prevents drift and makes changes auditable.",
+      "completion": 100,
+      "launch_status": "Launched",
+      "systems": ["Nexus", "Orbit", "Atlas"],
+      "complete": ["Canonical market and lifecycle identities are defined", "Quote and booking events carry canonical IDs", "Nexus owns typed SEO content, publishing and correction workflows", "Orbit renders server-owned content while protecting ranking-critical contracts", "Canonical Bangalore architecture is modelled in Atlas"],
+      "pending": ["Continue migration of remaining legacy content only through reviewed contracts", "Monitor content freshness and fallback behavior in production"],
+      "evidence_url": "https://github.com/GMC-GetMeCab/nexus/issues/98"
+    },
+    {
+      "name": "Route economics and pricing authority",
+      "why": "Bookings and traffic can grow while the route loses money. Scaling decisions require immutable price decisions and actual supplier-cost reconciliation at route level.",
+      "completion": 56,
+      "launch_status": "Foundation live",
+      "systems": ["Nexus", "Orbit"],
+      "complete": ["Canonical economics ledger and deterministic contribution contract exist", "Price freshness and contribution guardrails exist", "Economics decisions persist immutably in production", "Transparent route and package quote foundations are live"],
+      "pending": ["Ingest and reconcile actual supplier costs", "Join completed, cancelled and refunded bookings to economics", "Enforce price publication from runtime contribution truth", "Expose route economics operating reports"],
+      "evidence_url": "https://github.com/GMC-GetMeCab/nexus/issues/99"
+    },
+    {
+      "name": "Customer acquisition and booking attribution",
+      "why": "We need to know which landing page and channel created a quote, checkout and confirmed booking without exposing customer data or losing identity between systems.",
+      "completion": 63,
+      "launch_status": "Website live · assisted partial",
+      "systems": ["Orbit", "Nexus", "Concierge"],
+      "complete": ["Website funnel measures search, fare results, vehicle selection, checkout and booking", "First-touch Bangalore/channel identity persists through the Orbit session", "Nexus emits canonical quote and booking lifecycle events", "Concierge website channel, journey-context contract and durable sessions exist"],
+      "pending": ["Prove website events reconcile to authoritative bookings", "Carry WhatsApp/assisted attribution through completed trip", "Capture loss, cancellation and handoff reasons consistently"],
+      "evidence_url": "https://github.com/GMC-GetMeCab/orbit/pull/161"
+    },
+    {
+      "name": "Monitoring and reconciliation",
+      "why": "An event emitter is not measurement until production collection, reconciliation and alerts prove that the numbers are complete and trustworthy.",
+      "completion": 40,
+      "launch_status": "Foundation live",
+      "systems": ["Beacon", "Terra", "Orbit"],
+      "complete": ["Orbit exposes privacy-safe bounded SEO funnel metrics", "Beacon can query an attributed Bangalore market funnel", "Terra owns the production Alloy desired state", "Deployment and operating paths are documented"],
+      "pending": ["Activate and verify the production Orbit metrics scrape", "Populate quote, availability, checkout and confirmed-booking series", "Add source-to-source reconciliation and data-quality alerts", "Add route-level synthetic journey monitoring"],
+      "evidence_url": "https://github.com/GMC-GetMeCab/beacon/issues/1"
+    },
+    {
+      "name": "Operating scorecard and scale decisions",
+      "why": "The initiative is complete only when the team can decide to scale, maintain or pause each route using demand, conversion, contribution and operational reliability—not opinion.",
+      "completion": 25,
+      "launch_status": "Not launched",
+      "systems": ["Atlas", "Compass", "Nexus", "Beacon"],
+      "complete": ["The parent epic and dependency order are documented", "Delivery, GA4 and GSC progress can be reviewed in this dashboard", "The intended route × segment × channel scorecard is defined"],
+      "pending": ["Publish authoritative completed-trip contribution in the scorecard", "Name commercial, pricing, supply, support and analytics owners", "Agree numeric acquisition, margin, completion and cancellation gates", "Run day-30, day-60 and day-90 scale/maintain/pause reviews"],
+      "evidence_url": "https://github.com/GMC-GetMeCab/compass/issues/1"
+    }
+  ],
+  "differences": [
+    {"before": "Pages and sitemap ownership were split between legacy frontend and the new stack.", "now": "Orbit owns a reviewed, eligibility-driven Bangalore inventory; legacy entries were removed and ALB routes one sitemap.", "why": "Concentrate crawl and ranking authority instead of asking Google to reconcile duplicates."},
+    {"before": "Pages could invent or silently change route identity, SEO fields and canonical URLs.", "now": "Nexus owns canonical identities and content; Orbit protects search-critical contracts with executable tests.", "why": "Make every route measurable and prevent routine UI changes from resetting SEO progress."},
+    {"before": "Airport fare area, exact address, direction, terminal and flight details were conflated or lost.", "now": "Each concept has a clear role and persists from search through quote, checkout and dispatch.", "why": "Price against controlled geography while giving operations the exact trip information they need."},
+    {"before": "Success was discussed through traffic, bookings or code shipped in isolation.", "now": "Delivery, acquisition, funnel conversion, completed-trip economics and readiness gates are separate layers.", "why": "Avoid scaling routes that attract traffic but fail operationally or lose money."},
+    {"before": "Monitoring was an application concern with incomplete production ownership.", "now": "Orbit emits bounded metrics, Terra owns collection and Beacon owns cross-system queries and alerts.", "why": "Give every observability layer one accountable owner and make missing data visible rather than treating it as zero."}
+  ],
   "delivery_summary": {
     "period": "30 Jul–5 Aug 2026",
     "merged_github_prs": 102,
