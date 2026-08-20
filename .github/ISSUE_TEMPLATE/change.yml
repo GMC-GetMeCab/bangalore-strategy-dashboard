@@ -1,0 +1,60 @@
+name: Change proposal
+description: Define a code, configuration, infrastructure, documentation, or operational change
+title: "[Change]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is the source of requirements for the change. Complete every required section before implementation begins.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or business objective
+      description: Explain the problem, opportunity, or business outcome and why it matters.
+    validations:
+      required: true
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current behavior
+      description: Describe the current system behavior or state. Include evidence where useful.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: Describe the desired result in observable terms.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-scope
+    attributes:
+      label: Proposed scope and implementation
+      description: Describe the intended approach, affected components, and anything explicitly out of scope.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Provide a checklist of verifiable completion conditions.
+      placeholder: |
+        - [ ] Criterion one
+        - [ ] Criterion two
+    validations:
+      required: true
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing requirements
+      description: List automated and manual verification required before merge.
+    validations:
+      required: true
+  - type: textarea
+    id: risk-rollout
+    attributes:
+      label: Risks, rollout and rollback
+      description: Describe risks, dependencies, migrations, rollout and rollback. Write "None" only when genuinely inapplicable.
+    validations:
+      required: true

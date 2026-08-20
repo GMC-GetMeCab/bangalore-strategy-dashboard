@@ -1,0 +1,86 @@
+name: Issue policy
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  validate-linked-issue:
+    name: Linked issue is complete
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate local closing issue and required details
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          mapfile -t issue_numbers < <(
+            printf '%s\n' "$PR_BODY" |
+              grep -Eio '(close[sd]?|fix(e[sd])?|resolve[sd]?)[[:space:]]*:?[[:space:]]+#[0-9]+' |
+              grep -Eo '[0-9]+' |
+              sort -un || true
+          )
+
+          if (( ${#issue_numbers[@]} == 0 )); then
+            echo '::error::The PR body must contain Closes #<number>, Fixes #<number>, or Resolves #<number> for an issue in this repository.'
+            exit 1
+          fi
+
+          required_headings=(
+            'Problem or business objective'
+            'Current behavior'
+            'Expected behavior'
+            'Proposed scope and implementation'
+            'Acceptance criteria'
+            'Testing requirements'
+            'Risks, rollout and rollback'
+          )
+
+          complete_issue=''
+          for issue_number in "${issue_numbers[@]}"; do
+            if ! issue_body="$(gh issue view "$issue_number" --repo "$REPOSITORY" --json body --jq .body 2>/dev/null)"; then
+              echo "Issue #$issue_number does not exist or is not readable."
+              continue
+            fi
+
+            missing=()
+            for heading in "${required_headings[@]}"; do
+              section="$(printf '%s\n' "$issue_body" | awk -v wanted="$heading" '
+                BEGIN { found=0 }
+                /^### / {
+                  title=substr($0, 5)
+                  if (found) exit
+                  if (title == wanted) { found=1; next }
+                }
+                found { print }
+              ')"
+              meaningful="$(printf '%s\n' "$section" | sed '/^[[:space:]]*$/d; /^[[:space:]]*<!--.*-->[[:space:]]*$/d')"
+              if [[ -z "$meaningful" ]]; then
+                missing+=("$heading")
+              fi
+            done
+
+            if (( ${#missing[@]} == 0 )); then
+              complete_issue="#$issue_number"
+              break
+            fi
+
+            echo "Issue #$issue_number is incomplete. Missing or empty sections:"
+            printf '  - %s\n' "${missing[@]}"
+          done
+
+          if [[ -z "$complete_issue" ]]; then
+            echo '::error::At least one locally linked issue must contain every required change-detail section.'
+            exit 1
+          fi
+
+          echo "Validated $complete_issue as the complete owning issue."
